@@ -21,7 +21,6 @@ const RNSchedule = ({hourSize, dataArray, headerColor, leftIcon, accentColor, st
   return (
     <ContextProvider hour_size={hourSize}>
       <View style={styles.container}>
-        <Header status_bar={status_bar} accent={accentColor} left_icon={leftIcon} header_color={tinycolor(headerColor).isValid() ? tinycolor(headerColor).toHexString() : Colors.light_gray}/>
         <DatePickeMe />
         <SmartScroll hour_size={hourSize}>
           <View style={styles.body}>
