@@ -9,7 +9,6 @@ import { hrsToStart } from '../services/hrsToPx';
 const ApptView = ({ topTime, appt, hour_size, onEventPress, borderColor, multiple }) => { // new prop
   const color = tinycolor(appt.color).isValid() ? tinycolor(appt.color).toHexString() : Colors.red;
   const margin = hrsToStart(appt.start, topTime) * hour_size;
-  //sconsole.log("appt data::", appt)
 
   const categoryTextColor = appt.color
   return (

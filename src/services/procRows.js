@@ -16,8 +16,7 @@ const procRows = (inputData) => { // Predicated on appts sorted by start
         end: appt.end,
         rowAppts: [appt]
       })
-    }
-    console.log('output data', outputData)
+    }    
   })
 
   return outputData;

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import ApptView from './ApptView';
 
 const RowView = ({ row, hour_size, onEventPress }) => {
-  console.log('row.rowAppts', row.rowAppts)
+  
   return <View
     style={{
       width: '100%',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from './components/Header';
@@ -15,8 +15,12 @@ import tinycolor from 'tinycolor2';
 import Colors from './constants/colors';
 import procData from './services/procData';
 
-const RNSchedule = ({hourSize, dataArray, headerColor, leftIcon, accentColor, status_bar, onEventPress}) => {
-  let data = !!dataArray && procData(dataArray, hourSize);
+const RNSchedule = ({hourSize, dataArray, headerColor, leftIcon, accentColor, status_bar, onEventPress, selectedDate}) => {
+  const [data, setData] = useState(!!dataArray && procData(dataArray, hourSize));
+
+  useEffect(() => {
+    setData(!!dataArray && procData(dataArray, hourSize));
+  }, [dataArray.length]);
 
   return (
     <ContextProvider hour_size={hourSize}>
@@ -30,7 +34,7 @@ const RNSchedule = ({hourSize, dataArray, headerColor, leftIcon, accentColor, st
             <View style={styles.schedule_col}>
               <DrawnGrid/>
               <NowBar hour_size={hourSize}/>
-              { !!data && <ScheduledData dataArray={data} onEventPress={onEventPress}/> }
+              { !!data && <ScheduledData dataArray={data} onEventPress={onEventPress} selectedDate={selectedDate} /> }
             </View>
           </View>
         </SmartScroll>
